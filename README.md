@@ -25,15 +25,17 @@ Before you begin, ensure you have the following software installed:
    Rename the `.env.example` file to `.env` and configure environment variables if necessary.
 
 4. **Build and Run**
+   ```bash
    npm run build   # Build TypeScript files
    npm start       # Start the Express server
 
-The server should now be running at http://localhost:3000. You can access the API using a tool like Postman.
+   The server should now be running at http://localhost:3000. You can access the API using a tool like Postman.
 
 5. **Development Mode**
+   ```bash
    npm run dev
 
-This command will use `ts-node-dev` to start the server, which automatically restarts on code changes.
+   This command will use `ts-node-dev` to start the server, which automatically restarts on code changes.
 
 6. **Testing**
    To run tests
@@ -52,8 +54,8 @@ This command will use `ts-node-dev` to start the server, which automatically res
    test/: Test files (unit tests and integration tests).
    config/: Configuration files.
 
-Contributing
+## Contributing
 Feel free to fork this repository and submit pull requests if you have any improvements to suggest.
 
-License
+## License
 This project is licensed under the MIT License.
