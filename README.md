@@ -1,4 +1,4 @@
-# Express TypeScript App
+# Express Typescript App
 
 This repository contains a  Express.js application written in TypeScript. This application is build as a part of internship screening task for a position of Backend Developer at Everestwalk Group
 
@@ -38,21 +38,23 @@ Before you begin, ensure you have the following software installed:
    This command will use `ts-node-dev` to start the server, which automatically restarts on code changes.
 
 6. **Testing**
+   ```bash
    To run tests
    npm test
 
 7. **Linting and Formatting**
+   ```bash
     To lint typescript files:
     npm run lint
 
     To format code:
     npm run format
 
-8. **Directory Structure**
-   src/: Source code directory containing TypeScript files.
-   dist/: Compiled JavaScript files (generated during build).
-   test/: Test files (unit tests and integration tests).
-   config/: Configuration files.
+8. **Directory Structure**  
+   src/: Source code directory containing TypeScript files.  
+   dist/: Compiled JavaScript files (generated during build).  
+   test/: Test files (unit tests and integration tests).  
+   config/: Configuration files.  
 
 ## Contributing
 Feel free to fork this repository and submit pull requests if you have any improvements to suggest.
