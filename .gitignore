@@ -1,0 +1,15 @@
+# Node.js / Express
+node_modules/
+dist/
+
+#IDE and editor
+.vscode/
+
+#Dependency lock files
+package-lock.json
+
+# Environment Variables
+.env
+
+#Output of "npm run build"
+build/
