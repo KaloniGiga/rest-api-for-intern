@@ -1,9 +1,11 @@
 import { Request, Response } from 'express';
-import User from 'models/user.model';
+import { User } from 'models/user.model';
+import { tryCatch } from '../utils/tryCatch';
 
 class UserController {
   async createUser(req: Request, res: Response) {
-    // Implement data validation and record creation
+    // Implement data validation and user creation
+
   }
 
   async getAllUsers(req: Request, res: Response) {

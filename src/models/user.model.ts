@@ -1,20 +1,36 @@
-import { DataTypes, Model } from 'sequelize';
-import { sequelize } from '../config/db'; // Assuming you've set up Sequelize connection
+import { DataTypes, Model } from "sequelize";
+import { IUser } from "types/user.interface";
+import { sequelize } from '../config/db';
 
-class User extends Model {
-  // Define fields and associations here
-}
+export class User extends Model<IUser> {}
 
 User.init(
-  {
-    name: DataTypes.STRING,
-    email: DataTypes.STRING,
-    phoneNumber: DataTypes.STRING,
-  },
-  {
-    sequelize,
-    modelName: 'User',
-  },
-);
-
-export default User;
+    {
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true,
+        },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true,
+            validate: {
+                isEmail: true,
+            }
+        },
+        phone: {
+            type: DataTypes.STRING,
+            allowNull: false
+        }
+    },
+    {
+        sequelize,
+        modelName: 'User',
+        timestamps: false
+    }
+)

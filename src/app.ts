@@ -14,7 +14,7 @@ config();
 app.use(express.json());
 
 //validate env variable
-validateEnv
+validateEnv()
 
 //configure routes
 app.use('/api', userRoutes);

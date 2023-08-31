@@ -1,6 +1,5 @@
 # Node.js / Express
 node_modules/
-dist/
 
 #IDE and editor
 .vscode/
@@ -12,4 +11,4 @@ package-lock.json
 .env
 
 #Output of "npm run build"
-build/
+dist/
