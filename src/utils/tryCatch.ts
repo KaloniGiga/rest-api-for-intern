@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 
 export const tryCatch =
-  (controller: (req: Request, res: Response) => Promise<void>) =>
+  (controller:any) =>
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       await controller(req, res);
