@@ -1,5 +1,6 @@
 import { logger } from './utils/logger';
 import app from './app';
+import { configureDB } from './config/db';
 
 //Handling Uncaught exception
 process.on('uncaughtException', (err) => {
@@ -9,6 +10,7 @@ process.on('uncaughtException', (err) => {
 });
 
 // connecting to database
+configureDB();
 
 const PORT = process.env.PORT || 4000;
 //Server is listening

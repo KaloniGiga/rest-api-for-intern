@@ -2,6 +2,7 @@ import express from 'express';
 import { config } from 'dotenv';
 import errorMiddleware from './middlewares/error.middleware';
 import userRoutes from './routes/user.routes';
+import validateEnv from './utils/validateEnv';
 
 //make the instance of the express app
 const app = express();
@@ -11,6 +12,9 @@ config();
 
 //middleware
 app.use(express.json());
+
+//validate env variable
+validateEnv
 
 //configure routes
 app.use('/api', userRoutes);
