@@ -1,13 +1,13 @@
-import { CustomError } from "../custom-error";
+import { CustomError } from '../custom-error';
 
 export class BadRouteError extends CustomError {
-   statusCode = 404;
+  statusCode = 404;
 
-   constructor() {
-     super()
-   }
+  constructor() {
+    super();
+  }
 
-   formatErrors() {
-        return [{message: 'This route does not exist!'}]
-   }
+  formatErrors() {
+    return [{ message: 'This route does not exist!' }];
+  }
 }
