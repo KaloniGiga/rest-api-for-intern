@@ -1,9 +1,9 @@
 export abstract class CustomError extends Error {
-  abstract statusCode: number;
+    abstract statusCode: number;
 
-  constructor() {
-    super();
-  }
+    constructor() {
+        super()
+    }
 
-  abstract formatErrors(): { message: string; field?: string }[];
+    abstract formatErrors(): { message: string, field?: string }[]
 }

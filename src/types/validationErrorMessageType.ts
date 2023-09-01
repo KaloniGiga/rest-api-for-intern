@@ -1,5 +1,5 @@
-import { ValidationError } from 'express-validator';
+import { ValidationError } from "express-validator"
 
 export type validationErrorMessageType = {
-  error: ValidationError[];
-};
+    error: ValidationError[]
+}

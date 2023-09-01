@@ -1,21 +1,21 @@
-import { check, validationResult } from 'express-validator';
+import { check, validationResult } from "express-validator";
 
-export const validateUser = [
-  check('name')
+exports.validateUser = [
+    check('name')
     .trim()
     .escape()
     .not()
     .isEmpty()
     .withMessage('User name cannot be empty!')
     .bail()
-    .isLength({ min: 3 })
+    .isLength({min: 3})
     .withMessage('Minimum 3 characters required!')
     .bail()
-    .isLength({ max: 25 })
+    .isLength({max: 25})
     .withMessage('Maximum 25 characters allowed!')
     .bail(),
 
-  check('email')
+    check('email')
     .trim()
     .not()
     .isEmpty()
@@ -25,5 +25,12 @@ export const validateUser = [
     .withMessage('Invalid email address')
     .bail(),
 
-  check('phone').trim().escape().not().isEmpty().withMessage('Phone cannot be empty').bail(),
-];
+    check('phone')
+    .trim()
+    .escape()
+    .not()
+    .isEmpty()
+    .withMessage('Phone cannot be empty')
+    .bail()
+    
+]
