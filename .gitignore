@@ -12,3 +12,6 @@ package-lock.json
 
 #Output of "npm run build"
 dist/
+
+#test coverage folder
+coverage

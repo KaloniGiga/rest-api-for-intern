@@ -3,7 +3,7 @@ import { config } from 'dotenv';
 import errorMiddleware from './middlewares/error.middleware';
 import userRoutes from './routes/user.routes';
 import validateEnv from './utils/validateEnv';
-import { BadRouteError } from 'errors/customError/bad-route-error';
+import { BadRouteError } from './errors/customError/bad-route-error';
 
 //make the instance of the express app
 const app = express();

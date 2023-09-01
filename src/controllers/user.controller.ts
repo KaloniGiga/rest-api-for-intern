@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import { User } from 'models/user.model';
+import { User } from '../models/user.model';
 import { matchedData, validationResult } from 'express-validator';
 import { RequestValidationError } from '../errors/customError/req-validation.error';
-import { ErrorHandler } from 'errors/errorHandler';
+import { ErrorHandler } from '../errors/errorHandler';
 
 class UserController {
 

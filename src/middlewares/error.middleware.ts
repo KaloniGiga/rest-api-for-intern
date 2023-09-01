@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { ErrorHandler } from '../errors/errorHandler';
-import { CustomError } from 'errors/custom-error';
+import { CustomError } from '../errors/custom-error';
 
 const errorMiddleware = (err: any, req: Request, res: Response, next: NextFunction) => {
   let statusCode = 500;
