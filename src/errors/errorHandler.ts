@@ -3,7 +3,7 @@ export class ErrorHandler extends Error {
   message: string;
 
   constructor(statusCode: number, message: string) {
-    super(message); 
+    super(message);
 
     //initializing the class properties
     this.statusCode = statusCode;

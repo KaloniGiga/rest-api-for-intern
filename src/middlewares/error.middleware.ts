@@ -7,8 +7,8 @@ const errorMiddleware = (err: any, req: Request, res: Response, next: NextFuncti
   let message = 'Something went wrong';
 
   //if the error is instance of Abstract class Custom Error
-  if(err instanceof CustomError) {
-    return res.status(err.statusCode).send({errors: err.formatErrors()})
+  if (err instanceof CustomError) {
+    return res.status(err.statusCode).send({ errors: err.formatErrors() });
   }
 
   //if the error is instance of ErrorHandler
@@ -17,9 +17,7 @@ const errorMiddleware = (err: any, req: Request, res: Response, next: NextFuncti
     message = err.message;
   }
 
-  console.error(err);
-
-  return res.status(statusCode).json({ message });
+  return res.status(statusCode).json({ error: message });
 };
 
 export default errorMiddleware;

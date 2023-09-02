@@ -1,6 +1,6 @@
 import { Table, Column, Model, DataType, Unique, IsEmail } from 'sequelize-typescript';
 import { sequelize } from '../config/db';
-import { UserAttributes, UserCreationAttributes } from 'types/user.interface';
+import { UserAttributes, UserCreationAttributes } from '../types/user.interface';
 
 @Table({
   modelName: 'User',
