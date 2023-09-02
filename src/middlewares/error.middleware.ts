@@ -15,20 +15,6 @@ const errorMiddleware = (err: any, req: Request, res: Response, next: NextFuncti
   if (err instanceof ErrorHandler) {
     statusCode = err.statusCode;
     message = err.message;
-  } else {
-    if (process.env.NODE_ENV !== 'production') {
-      if (typeof err === 'string') {
-        message = err;
-      } else if (err instanceof Error) {
-        message = err.message;
-      }
-    }
-  }
-
-  let stackTrace = undefined;
-  //return stack trace when developing locally
-  if (process.env.NODE_ENV !== 'production') {
-    stackTrace = err.stack;
   }
 
   console.error(err);

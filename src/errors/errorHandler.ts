@@ -3,11 +3,7 @@ export class ErrorHandler extends Error {
   message: string;
 
   constructor(statusCode: number, message: string) {
-    if (message) {
-      super(message);
-    } else {
-      super('A generic error occured!');
-    }
+    super(message); 
 
     //initializing the class properties
     this.statusCode = statusCode;

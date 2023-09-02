@@ -1,36 +1,41 @@
-import { DataTypes, Model } from "sequelize";
-import { IUser } from "types/user.interface";
+import { Table, Column, Model, DataType, Unique, IsEmail } from 'sequelize-typescript';
 import { sequelize } from '../config/db';
+import { UserAttributes, UserCreationAttributes } from 'types/user.interface';
 
-export class User extends Model {}
+@Table({
+  modelName: 'User',
+  timestamps: false,
+})
+export class User extends Model<UserAttributes, UserCreationAttributes> {
+  @Column({
+    type: DataType.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+  })
+  id!: number;
 
-User.init(
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true,
-        },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true,
-            validate: {
-                isEmail: true,
-            }
-        },
-        phone: {
-            type: DataTypes.STRING,
-            allowNull: false
-        }
-    },
-    {
-        sequelize,
-        modelName: 'User',
-        timestamps: false
-    }
-)
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  name!: string;
+
+  @Unique
+  @IsEmail
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  email!: string;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  phone!: string;
+}
+
+// call `sequelize.addModels([User])` to add the model to sequelize instance:
+sequelize.addModels([User]);
+
+export default User;
