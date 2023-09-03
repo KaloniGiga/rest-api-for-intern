@@ -16,7 +16,7 @@ const errorMiddleware = (err: any, req: Request, res: Response, next: NextFuncti
     statusCode = err.statusCode;
     message = err.message;
   }
-
+  console.log(statusCode, 'inside middleware');
   return res.status(statusCode).json({ error: message });
 };
 

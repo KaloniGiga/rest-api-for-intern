@@ -8,7 +8,7 @@ export class ErrorHandler extends Error {
     //initializing the class properties
     this.statusCode = statusCode;
     this.message = message;
-
+    console.log(statusCode, 'inside errorhandler');
     Error.captureStackTrace(this, this.constructor);
   }
 }

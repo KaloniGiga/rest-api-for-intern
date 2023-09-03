@@ -16,7 +16,6 @@ export class UserController {
        **/
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        console.log(errors.array());
         return next(new RequestValidationError(errors.array()));
       }
 
@@ -47,7 +46,7 @@ export class UserController {
         phone,
       });
 
-      return res.status(201).json({ newUser, message: 'New user created.'});
+      return res.status(201).json({ newUser, message: 'New user created.' });
     } catch (error) {
       return next(new ErrorHandler(500, 'An error occured while creating user'));
     }
@@ -74,14 +73,12 @@ export class UserController {
         return next(new RequestValidationError(errors.array()));
       }
       const { id } = matchedData(req);
-
       //retrieve the user with the given id.
       const targetUser = await User.findOne({
         where: {
           id: id,
         },
       });
-
       /**
        * if user is not found
        */
@@ -124,9 +121,17 @@ export class UserController {
       }
       const { id } = matchedData(req);
 
-      const targetUser = await User.findOne({ where: { id } });
+      //retrieve the user with the given id.
+      const targetUser = await User.findOne({
+        where: {
+          id: id,
+        },
+      });
+      /**
+       * if user is not found
+       */
       if (!targetUser) {
-        return next(new ErrorHandler(404, 'User not found.'));
+        return next(new ErrorHandler(404, 'User not found'));
       }
 
       const deletedUser = await User.destroy({ where: { id } });
@@ -136,7 +141,7 @@ export class UserController {
 
       return res.status(200).json({ message: 'user deleted successfully.' });
     } catch (error) {
-      return next(new ErrorHandler(500, 'Something went wrong!'));
+      next(new ErrorHandler(500, 'Something went wrong while deleting user.'));
     }
   }
 }
