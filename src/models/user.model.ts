@@ -40,6 +40,6 @@ export class User extends Model<UserAttributes, UserCreationAttributes> {
 }
 
 // call `sequelize.addModels([User])` to add the model to sequelize instance:
-sequelize.addModels([User]);
+// sequelize.addModels([User]);
 
 export default User;

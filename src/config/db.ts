@@ -1,5 +1,7 @@
 import { Sequelize } from 'sequelize-typescript';
 import { logger } from '../utils/logger';
+import User from '../models/user.model';
+import Post from '../models/post.model';
 
 export const sequelize = new Sequelize({
   dialect: 'postgres', // Use the appropriate dialect for your database
@@ -11,6 +13,7 @@ export const sequelize = new Sequelize({
   dialectOptions: {
     ssl: { rejectUnauthorized: false },
   },
+  models: [User, Post],
 });
 
 //test if db is connected or not

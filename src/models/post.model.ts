@@ -35,5 +35,5 @@ export class Post extends Model<PostAttributes, PostCreationAttributes> {
   user!: User;
 }
 
-sequelize.addModels([Post]);
+// sequelize.addModels([Post]);
 export default Post;

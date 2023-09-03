@@ -1,16 +1,16 @@
 import { NextFunction, Request, Response } from 'express';
 import { matchedData, validationResult } from 'express-validator';
-import { RequestValidationError } from 'src/errors/customError/req-validation.error';
+import { RequestValidationError } from '../errors/customError/req-validation.error';
 import { postService } from '../services/post.service';
 import { ErrorHandler } from '../errors/errorHandler';
 import Post from '../models/post.model';
 import { userService } from '../services/user.service';
+import { Op } from 'sequelize';
 
 export class PostController {
-
   /**
    * POST, create a post for user with id = userId
-  */
+   */
 
   async createPost(req: Request, res: Response, next: NextFunction) {
     try {
@@ -29,10 +29,9 @@ export class PostController {
     }
   }
 
-
   /**
    * GET, get all the post of user whose Id = userId
-  */
+   */
 
   async getAllPostOfUser(req: Request, res: Response, next: NextFunction) {
     try {
@@ -46,21 +45,22 @@ export class PostController {
 
       //check if user with given userid exist or not
       const targetUser = await userService.findUserById(userId);
-      if(!targetUser) {
-        return next(new ErrorHandler(422, 'Invalid userId'))
+      if (!targetUser) {
+        return next(new ErrorHandler(422, 'Invalid userId'));
       }
 
-    //   const allPosts = await Post.findAll({ where: { userId: userId } });
+      //   const allPosts = await Post.findAll({
+      //     where: { userId: userId}
+      //   });
       return res.status(200).json({ posts: [], message: 'All posts of a user fetched.' });
     } catch (error) {
       return next(new ErrorHandler(500, 'Something went wrong! Server error.'));
     }
   }
 
-
   /**
    * GET, get the post by Id
-  */
+   */
 
   async getPostById(req: Request, res: Response, next: NextFunction) {
     try {

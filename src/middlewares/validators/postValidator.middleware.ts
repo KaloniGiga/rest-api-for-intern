@@ -1,35 +1,35 @@
-import { check } from "express-validator";
+import { check } from 'express-validator';
 
 export const createPostValdation = [
-    check('title')
+  check('title')
     .trim()
     .escape()
     .not()
     .isEmpty()
     .withMessage('Post title cannot be empty!')
     .bail()
-    .isLength({min: 2})
+    .isLength({ min: 2 })
     .withMessage('Minimum 3 characters required!')
     .bail()
     .isLength({ max: 254 })
     .withMessage('Maximum 254 characters allowed!')
     .bail(),
 
-    check('content')
+  check('content')
     .trim()
     .not()
     .isEmpty()
     .withMessage('Post Content cannot be empty.')
     .bail()
-    .isLength({ min: 2})
+    .isLength({ min: 2 })
     .withMessage('Minimum characters 2 required!')
     .bail()
-    .isLength({ max: 254})
-    .withMessage("Maximum 255 characters allowed!")
+    .isLength({ max: 254 })
+    .withMessage('Maximum 255 characters allowed!')
     .bail(),
-]
+];
 
-export const IdValidation  = [
+export const IdValidation = [
   check('userId')
     .trim()
     .escape()
@@ -41,7 +41,7 @@ export const IdValidation  = [
     .isNumeric()
     .withMessage('must be a number')
     .bail(),
-]
+];
 
 export const PostIdValidation = [
   check('id')
@@ -55,4 +55,4 @@ export const PostIdValidation = [
     .isNumeric()
     .withMessage('must be a number')
     .bail(),
-]
+];

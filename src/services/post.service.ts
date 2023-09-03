@@ -1,5 +1,5 @@
-import Post from 'src/models/post.model';
-import { createPostParams } from 'src/types/createPost.interface';
+import Post from '../models/post.model';
+import { createPostParams } from '../types/createPost.interface';
 
 export class PostService {
   async createPost(createPostDetails: createPostParams) {
