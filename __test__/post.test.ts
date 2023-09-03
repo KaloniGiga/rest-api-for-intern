@@ -70,13 +70,22 @@ describe('API tests for posts', () => {
     expect(res.body).toHaveProperty('post');
   });
 
-  it('should delete all posts when user is deleted',  async () => {
+  it('should delete all posts when user is deleted', async () => {
     const user = await User.create(userData);
     await request(app).post(`/api/posts/${user.id}`).send(postData);
     await request(app).delete(`/api/users/${user.id}`);
-    const res = await request(app).get(`/api/posts/user/${user.id}`)
-   
+    const res = await request(app).get(`/api/posts/user/${user.id}`);
+
     expect(res.status).toBe(422);
-    expect(res.body.error).toBe('Invalid userId')
-  })
+    expect(res.body.error).toBe('Invalid userId');
+  });
+
+  it('should delete all posts of a user', async () => {
+    const user = await User.create(userData);
+    await request(app).post(`/api/posts/${user.id}`).send(postData);
+    const res = await request(app).delete(`/api/posts/${user.id}`);
+
+    expect(res.status).toBe(200);
+    expect(res.body.message).toBe('Successfully deleted all Posts of a User!');
+  });
 });

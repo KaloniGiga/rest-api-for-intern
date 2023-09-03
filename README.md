@@ -23,40 +23,44 @@ This repository contains a  Express.js application written in TypeScript. This a
 **Create a New User**
 Method: POST
 Description: Create a new user.
-Endpoint: /users
+Endpoint: /api/users
 
 **Get All Users**
 Method: GET
 Description: Get all users' data.
-Endpoint: /users
+Endpoint: /api/users
 
 **Get User Data by ID**
 Method: GET
 Description: Get user data by ID.
-Endpoint: /users/:id
+Endpoint: /api/users/:id
 
 **Update User Data by ID**
 Method: PUT
 Description: Update user data by ID.
-Endpoint: /users/:id
+Endpoint: /api/users/:id
 
 **Delete User by ID**
 Method: DELETE
 Description: Delete user by ID.
-Endpoint: /users/:id
+Endpoint: /api/users/:id
 
 **Create a post for user with userId**
 Method: POST
 Description: Create post for user with id --> userid
-EndPoint: /posts/:userId
+EndPoint: /api/posts/:userId
 
 **Get all posts of user with userId**
 Method: GET
-EndPoint: /posts/user/:userId
+EndPoint: /api/posts/user/:userId
 
 **Get post by Id**
 Method: GET
-EndPoint: /posts/:id
+EndPoint: api/posts/:id
+
+**Delete all posts of a user with userId**
+Method: DELETE
+EndPoint: /api/posts/:userId
 
 ## Prerequisites
 

@@ -82,6 +82,37 @@ export class PostController {
       return next(new ErrorHandler(500, 'Failed to fetch the user.'));
     }
   }
+
+  /**
+   * DELETE, all post of a user
+   */
+
+  async deleteAllPostOfUser(req: Request, res: Response, next: NextFunction) {
+    try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return next(new RequestValidationError(errors.array()));
+      }
+
+      //extract the validated and sanitized request data.
+      const { userId } = matchedData(req);
+
+      const targetUser = await userService.findUserById(userId);
+      if (!targetUser) {
+        return next(new ErrorHandler(422, 'Invalid userId'));
+      }
+
+      await Post.destroy({
+        where: {
+          userId: userId,
+        },
+      });
+
+      res.status(200).json({ message: 'Successfully deleted all Posts of a User!' });
+    } catch (error) {
+      return next(new ErrorHandler(500, 'Failed to delete posts of a user.'));
+    }
+  }
 }
 
 export const postController = new PostController();

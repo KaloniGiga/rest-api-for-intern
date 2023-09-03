@@ -29,7 +29,8 @@ router.get('/posts/:id', PostIdValidation, postController.getPostById);
 /**
  * @method DELETE
  * @description delete all posts of a user with userID
-*/
+ */
 
-// router.delete('posts/:userId', IdValidation, postController.deleteAllPostOfUser);
+router.delete('/posts/:userId', IdValidation, postController.deleteAllPostOfUser);
+
 export default router;
