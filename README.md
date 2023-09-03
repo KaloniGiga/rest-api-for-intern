@@ -51,14 +51,14 @@ Endpoint: /api/users/:id
 Method: DELETE
 Description: Delete user by ID.
 Endpoint: /api/users/:id
-```bash
+```
 
 **Create a post for user with userId**
 ```bash
 Method: POST
 Description: Create post for user with id --> userid
 EndPoint: /api/posts/:userId
-```bash
+```
 
 **Get all posts of user with userId**
 ```bash
