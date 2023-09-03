@@ -3,7 +3,7 @@ import { User } from '../models/user.model';
 import { matchedData, validationResult } from 'express-validator';
 import { RequestValidationError } from '../errors/customError/req-validation.error';
 import { ErrorHandler } from '../errors/errorHandler';
-import { logger } from '../utils/logger';
+import { userService } from '../services/user.service';
 
 export class UserController {
   async createUser(req: Request, res: Response, next: NextFunction) {
@@ -26,11 +26,7 @@ export class UserController {
        * since email must be unique
        * check if the email is already in or not.
        */
-      const existingUser = await User.findOne({
-        where: {
-          email: email,
-        },
-      });
+      const existingUser = await userService.findUserByEmail(email);
 
       if (existingUser) {
         return next(new ErrorHandler(409, 'Email is already in use'));
@@ -40,11 +36,7 @@ export class UserController {
        * if received data are valid and
        * email is unique, then create new user
        */
-      const newUser = await User.create({
-        name,
-        email,
-        phone,
-      });
+      const newUser = await userService.createUser(name, email, phone);
 
       return res.status(201).json({ newUser, message: 'New user created.' });
     } catch (error) {
@@ -74,11 +66,7 @@ export class UserController {
       }
       const { id } = matchedData(req);
       //retrieve the user with the given id.
-      const targetUser = await User.findOne({
-        where: {
-          id: id,
-        },
-      });
+      const targetUser = await userService.findUserById(id);
       /**
        * if user is not found
        */
@@ -122,11 +110,7 @@ export class UserController {
       const { id } = matchedData(req);
 
       //retrieve the user with the given id.
-      const targetUser = await User.findOne({
-        where: {
-          id: id,
-        },
-      });
+      const targetUser = await userService.findUserById(id);
       /**
        * if user is not found
        */
@@ -134,14 +118,11 @@ export class UserController {
         return next(new ErrorHandler(404, 'User not found'));
       }
 
-      const deletedUser = await User.destroy({ where: { id } });
-      if (!deletedUser) {
-        return next(new ErrorHandler(401, 'Failed to delete user.'));
-      }
+      await User.destroy({ where: { id: id } });
 
       return res.status(200).json({ message: 'user deleted successfully.' });
     } catch (error) {
-      next(new ErrorHandler(500, 'Something went wrong while deleting user.'));
+      return next(new ErrorHandler(500, 'Something went wrong while deleting user.'));
     }
   }
 }
