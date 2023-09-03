@@ -9,7 +9,6 @@ describe('API tests for user', () => {
   let userData: any;
   let mockNext: jest.Mock<NextFunction>;
 
-
   beforeAll(async () => {
     userData = {
       name: faker.person.fullName(),
@@ -36,7 +35,7 @@ describe('API tests for user', () => {
 
   /**
    * user created successfully.
-  */
+   */
 
   it('should create user', async () => {
     const res = await request(app).post('/api/users').send(userData);
@@ -46,10 +45,9 @@ describe('API tests for user', () => {
     expect(res.body.message).toBe('New user created.');
   });
 
-
   /**
    * failed to create user, email is already in use
-  */
+   */
   it('should fail to create user, email already in use', async () => {
     await User.create(userData);
     const res = await request(app).post('/api/users').send(userData);
@@ -57,10 +55,9 @@ describe('API tests for user', () => {
     expect(res.body.error).toBe('Email is already in use');
   });
 
-
-/**
- * failed to create user, server error
-*/
+  /**
+   * failed to create user, server error
+   */
   // it('should fail to create user, server error ', async () => {
   //   jest.spyOn(User, 'create').mockRejectedValue(new Error('Database Error'));
   //   const res = await request(app).post('/api/users').send(userData);
@@ -71,7 +68,7 @@ describe('API tests for user', () => {
 
   /**
    * get all users successfully.
-  */
+   */
 
   it('should get all users', async () => {
     const res = await request(app).get('/api/users');
@@ -80,10 +77,9 @@ describe('API tests for user', () => {
     expect(res.body.message).toBe('All users fetched successfully.');
   });
 
-
   /**
    * should fail to get all user, server error
-  */
+   */
 
   // it('should fail to get all users', async () => {
   //   jest.spyOn(User, 'findAll').mockRejectedValue(new Error('Database Error'));
@@ -92,10 +88,9 @@ describe('API tests for user', () => {
   //   expect(response.body).toHaveProperty('error');
   // });
 
-
   /**
    * get user by id successfully.
-  */
+   */
 
   it('should get user by id', async () => {
     await User.create(userData);
@@ -107,7 +102,7 @@ describe('API tests for user', () => {
 
   /**
    * failed to get user by id, user not found
-  */
+   */
   it('should fail to get user, user not found', async () => {
     const res = await request(app).get(`/api/users/${100}`);
     expect(res.status).toBe(404);
@@ -116,7 +111,7 @@ describe('API tests for user', () => {
 
   /**
    * failed to get user by id because of server error
-  */
+   */
 
   // it('should fail to get user, server error', async () => {
   //   jest.spyOn(User, 'findOne').mockRejectedValue(new Error('Database error'));
@@ -126,7 +121,7 @@ describe('API tests for user', () => {
 
   /**
    * update user successfully
-  */
+   */
 
   it('should update user', async () => {
     await User.create(userData);
@@ -140,7 +135,7 @@ describe('API tests for user', () => {
 
   /**
    * fail to update user, user not found
-  */
+   */
   it('should fail to update user', async () => {
     const res = await request(app)
       .put(`/api/users/${100}`)
@@ -152,7 +147,7 @@ describe('API tests for user', () => {
 
   /**
    * delete user successfully.
-  */
+   */
 
   it('should delete User', async () => {
     await User.create(userData);
@@ -162,10 +157,9 @@ describe('API tests for user', () => {
     expect(res.body.message).toBe('user deleted successfully.');
   });
 
-
   /**
    * failed to delete user, user not found
-  */
+   */
 
   // it('should fail to delete user, user not found', async () => {
   //   const res = await request(app).delete(`/api/users/${1}`);
@@ -173,10 +167,9 @@ describe('API tests for user', () => {
   //   expect(res.body.error).toBe('User not found.');
   // });
 
-
   /**
    * failed to delete user with server error
-  */
+   */
 
   // it('should fail to delete user, with server error', async () => {
   //   jest.spyOn(User, 'destroy').mockRejectedValue(new Error('Database Error'));

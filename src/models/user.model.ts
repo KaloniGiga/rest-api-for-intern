@@ -1,6 +1,7 @@
-import { Table, Column, Model, DataType, Unique, IsEmail } from 'sequelize-typescript';
+import { Table, Column, Model, DataType, Unique, IsEmail, HasMany } from 'sequelize-typescript';
 import { sequelize } from '../config/db';
 import { UserAttributes, UserCreationAttributes } from '../types/user.interface';
+import Post from './post.model';
 
 @Table({
   modelName: 'User',
@@ -33,6 +34,9 @@ export class User extends Model<UserAttributes, UserCreationAttributes> {
     allowNull: false,
   })
   phone!: string;
+
+  @HasMany(() => Post)
+  posts!: Post[];
 }
 
 // call `sequelize.addModels([User])` to add the model to sequelize instance:

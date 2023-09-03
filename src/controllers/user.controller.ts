@@ -50,7 +50,7 @@ export class UserController {
       const allUsers = await User.findAll();
       return res.status(200).json({ users: allUsers, message: 'All users fetched successfully.' });
     } catch (error) {
-      return next(new ErrorHandler(500, 'Failed to fetch all users'));
+      return next(new ErrorHandler(500, 'Something went wrong! Server error.'));
     }
   }
 
