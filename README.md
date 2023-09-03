@@ -21,9 +21,11 @@ This repository contains a  Express.js application written in TypeScript. This a
 ## API Endpoints
 
 **Create a New User**
+```bash
 Method: POST
 Description: Create a new user.
 Endpoint: /api/users
+```
 
 **Get All Users**
 ```bash
