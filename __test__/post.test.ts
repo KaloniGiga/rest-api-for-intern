@@ -28,6 +28,7 @@ describe('API tests for posts', () => {
     jest.useFakeTimers();
     jest.setTimeout(100000);
     await Post.sync({ force: true });
+    await User.sync({ force: true });
   });
 
   afterEach(async () => {
@@ -48,18 +49,34 @@ describe('API tests for posts', () => {
 
   it('should get all posts of user', async () => {
     const user = await User.create(userData);
-    const res = await request(app).get(`/app/posts/${user.id}`);
+    const res = await request(app).get(`/api/posts/user/${user.id}`);
 
     expect(res.status).toBe(200);
     expect(res.body).toHaveProperty('posts');
     expect(Array.isArray(res.body.posts)).toBe(true);
   });
 
+  it('should fail to get all posts of user, user not found', async () => {
+    const res = await request(app).get(`/api/posts/user/${1}`);
+    expect(res.status).toBe(422);
+    expect(res.body.error).toBe('Invalid userId');
+  });
+
   it('should get post by id', async () => {
     await Post.create(postData);
-    const res = await request(app).get(`/app/posts/${1}`);
+    const res = await request(app).get(`/api/posts/${1}`);
 
     expect(res.status).toBe(200);
     expect(res.body).toHaveProperty('post');
   });
+
+  it('should delete all posts when user is deleted',  async () => {
+    const user = await User.create(userData);
+    await request(app).post(`/api/posts/${user.id}`).send(postData);
+    await request(app).delete(`/api/users/${user.id}`);
+    const res = await request(app).get(`/api/posts/user/${user.id}`)
+   
+    expect(res.status).toBe(422);
+    expect(res.body.error).toBe('Invalid userId')
+  })
 });

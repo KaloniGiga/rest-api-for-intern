@@ -157,6 +157,8 @@ describe('API tests for user', () => {
     expect(res.body.message).toBe('user deleted successfully.');
   });
 
+  
+
   /**
    * failed to delete user, user not found
    */

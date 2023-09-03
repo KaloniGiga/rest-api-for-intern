@@ -125,6 +125,7 @@ export class UserController {
       return next(new ErrorHandler(500, 'Something went wrong while deleting user.'));
     }
   }
+
 }
 
 export const userController = new UserController();

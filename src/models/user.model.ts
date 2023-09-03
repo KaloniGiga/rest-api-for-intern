@@ -35,7 +35,9 @@ export class User extends Model<UserAttributes, UserCreationAttributes> {
   })
   phone!: string;
 
-  @HasMany(() => Post)
+  @HasMany(() => Post, {
+    onDelete: 'CASCADE',
+  })
   posts!: Post[];
 }
 

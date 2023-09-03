@@ -49,10 +49,10 @@ export class PostController {
         return next(new ErrorHandler(422, 'Invalid userId'));
       }
 
-      //   const allPosts = await Post.findAll({
-      //     where: { userId: userId}
-      //   });
-      return res.status(200).json({ posts: [], message: 'All posts of a user fetched.' });
+      const allPosts = await Post.findAll({
+        where: { userId: userId },
+      });
+      return res.status(200).json({ posts: allPosts, message: 'All posts of a user fetched.' });
     } catch (error) {
       return next(new ErrorHandler(500, 'Something went wrong! Server error.'));
     }

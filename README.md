@@ -21,49 +21,40 @@ This repository contains a  Express.js application written in TypeScript. This a
 ## API Endpoints
 
 **Create a New User**
-
-```bash```
 Method: POST
 Description: Create a new user.
 Endpoint: /users
 
 **Get All Users**
-```bash```
 Method: GET
 Description: Get all users' data.
 Endpoint: /users
 
 **Get User Data by ID**
-```bash```
 Method: GET
 Description: Get user data by ID.
 Endpoint: /users/:id
 
 **Update User Data by ID**
-```bash```
 Method: PUT
 Description: Update user data by ID.
 Endpoint: /users/:id
 
 **Delete User by ID**
-```bash```
 Method: DELETE
 Description: Delete user by ID.
 Endpoint: /users/:id
 
 **Create a post for user with userId**
-```bash```
 Method: POST
 Description: Create post for user with id --> userid
 EndPoint: /posts/:userId
 
 **Get all posts of user with userId**
-```bash```
 Method: GET
 EndPoint: /posts/user/:userId
 
 **Get post by Id**
-```bash```
 Method: GET
 EndPoint: /posts/:id
 
@@ -138,7 +129,7 @@ Before you begin, ensure you have the following software installed:
    src/types: for declaring interfaces and types.
 
    src/utils: utility files
-   
+
    src/errors: custom error for varying types are declared.
 
 
